@@ -1,0 +1,16 @@
+---
+import { joinClass } from '@/utils';
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<hgroup
+  class={joinClass(
+    'font-imdb-roboto text-4xl font-normal items-center tracking-wide',
+    "before:content-[''] before:bg-[#F5C519] before:w-1 before:h-[30px] before:inline-block before:rounded-md before:mr-2 before:mt-[10px]",
+    className
+  )}
+  {...rest}
+>
+  <slot />
+</hgroup>

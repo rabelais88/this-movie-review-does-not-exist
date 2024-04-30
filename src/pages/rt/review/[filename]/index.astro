@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import LayoutReviewRT from '@/layouts/LayoutReviewRT.astro';
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const reviewEntries = await getCollection('review');
+  return reviewEntries.map((entry) => ({
+    params: { filename: entry.data.fileName },
+    props: { entry },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// const { filename } = Astro.params;
+---
+
+<LayoutReviewRT
+  title={entry.data.title}
+  metaImage={`${import.meta.env.HOST_URL}/${entry.data.fileName}-0.webp`}
+  metaDesc=`TMDNE review, made by generative AI: ${entry.data.title}`
+>
+  <!-- <a href="/reviews">back to list</a> -->
+  <div aria-roledescription="title-area">
+    <div
+      class="bg-imdb-gradient backdrop-blur-2xl font-imdb-roboto relative max-w-[1080px] h-[480px]"
+    >
+      <img
+        class="absolute w-full h-full object-cover object-center"
+        src={`/${entry.data.fileName}-0.webp`}
+      />
+      <div
+        aria-roledescription="shade"
+        class="absolute inset-0 bg-black opacity-[0.4] z-10"
+      >
+      </div>
+      <div
+        aria-roledescription="gradient"
+        class="absolute inset-0 bg-gradient-to-t from-[#171C20D8] z-20"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 inset-x-0 z-30 text-white px-4 pb-8 font-franklin"
+      >
+        <h1 class="text-2xl tracking-wider leading-8 font-semibold">
+          {entry.data.title}({entry.data.releaseYear})
+        </h1>
+        <p>
+          {entry.data.genres.join(' & ')}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white font-franklin">
+    <div class="max-w-[1080px] mx-auto px-4 lg:px-10">
+      <div
+        aria-roledescription="desc-area"
+        class="max-w-[650px] mb-10 bg-[#F3F3F3] p-4 pb-[14px] rounded-lg mt-10"
+      >
+        <p>{entry.data.plot}</p>
+        <div>
+          Director <span class="text-link-blue-alt">{entry.data.director}</span>
+        </div>
+        <div>
+          Writers <span class="text-link-blue-alt">{entry.data.screenplay}</span
+          >
+        </div>
+        <div>
+          <span>Stars</span>
+          <span class="inline-flex gap-2"
+            >{
+              entry.data.actor.map((actor) => (
+                <span class="text-link-blue-alt">{actor}</span>
+              ))
+            }</span
+          >
+        </div>
+      </div>
+      <div class="[&>*]:mt-10 pb-10">
+        <Content />
+      </div>
+    </div>
+  </div>
+
+  <style></style>
+</LayoutReviewRT>

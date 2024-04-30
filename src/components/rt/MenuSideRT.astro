@@ -1,0 +1,10 @@
+---
+import { joinClass } from '@/utils';
+import AdPlaceholder from '@/components/AdPlaceholderSide.astro';
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class={joinClass('w-[340px]', className)} {...rest}>
+  <AdPlaceholder />
+</div>

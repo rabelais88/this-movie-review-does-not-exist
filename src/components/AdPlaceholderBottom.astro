@@ -1,0 +1,13 @@
+---
+import { joinClass } from '@/utils';
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class={joinClass('min-h-[250px] bg-gray-300 p-4', className)} {...rest}>
+  <p class="font-extrabold">Advertise your product here</p>
+  <p>📬email:sungryeolp@gmail.com</p>
+  <a class="mt-2" href="https://github.com/rabelais88"
+    >👀behind the scenes(Github)</a
+  >
+</div>

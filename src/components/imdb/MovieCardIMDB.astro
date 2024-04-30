@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  review: CollectionEntry<'review'>;
+}
+const { review } = Astro.props;
+---
+
+<a
+  class="font-imdb-roboto py-4 first:border-none first:pt-0 border-t border-t-[rgba(0,0,0,0.12)]"
+  href={`/review/${review.data.fileName}`}
+>
+  <img
+    class="w-full h-[209px] object-cover mb-2"
+    src={`/${review.data.fileName}-0.webp`}
+  />
+  <div class="flex flex-col gap-2">
+    <p class="font-extrabold">{review.data.title}</p>
+    <div class="text-secondary-gray flex">
+      <p>{review.data.releaseYear}</p>
+      {
+        review.data.genres.map((genre) => (
+          <p class="capitalize ml-2">{genre}</p>
+        ))
+      }
+    </div>
+    <p class="text-sm tracking-wide">{review.data.plot}</p>
+    <p class="text-[13px]">
+      <b class="">Director</b>
+      <span class="text-[#0e63be] ml-2">{review.data.director}</span>
+    </p>
+    <p class="text-[13px]">
+      <b class="">Stars</b>
+      {
+        review.data.actor.map((actor) => (
+          <span class="text-[#0e63be] ml-2">{actor}</span>
+        ))
+      }
+    </p>
+  </div>
+</a>

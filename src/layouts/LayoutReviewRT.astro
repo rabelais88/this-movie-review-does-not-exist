@@ -1,0 +1,52 @@
+---
+import '@fontsource-variable/libre-franklin';
+import '@fontsource/bebas-neue';
+
+import MenuRT from '@/components/rt/MenuRT.astro';
+import AdPlaceholderBottom from '@/components/AdPlaceholderBottom.astro';
+interface Props {
+  title: string;
+  metaImage: string;
+  metaDesc: string;
+}
+
+const { title, metaImage, metaDesc } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content={metaImage} />
+    <meta property="og:description" content={metaDesc} />
+  </head>
+  <body>
+    <main class="max-w-[1008px] mx-auto bg-white">
+      <MenuRT />
+      <slot />
+      <AdPlaceholderBottom />
+    </main>
+  </body>
+</html>
+<style is:global>
+  :root {
+    /* --accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		); */
+  }
+  body {
+    background-color: #c8c7c4;
+  }
+</style>

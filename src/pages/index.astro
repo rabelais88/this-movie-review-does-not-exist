@@ -1,0 +1,29 @@
+---
+import HeadingIMDB from '@/components/imdb/HeadingIMDB.astro';
+import MovieCardIMDB from '@/components/imdb/MovieCardIMDB.astro';
+import LayoutIMDB from '@/layouts/LayoutListIMDB.astro';
+import { getCollection } from 'astro:content';
+// Get all entries from a collection.
+// Requires the name of the collection as an argument.
+// Example: retrieve `src/content/blog/**`
+const allReviews = await getCollection('review');
+---
+
+<LayoutIMDB title="this movie review does not exist">
+  <p class="h-[48px] pt-4 text-2xl font-semibold font-imdb-roboto">
+    TMDNE Charts
+  </p>
+  <HeadingIMDB> This Movie Review Does Not Exist </HeadingIMDB>
+  <p
+    class="font-imdb-roboto tracking-wide text-base leading-6 text-secondary-gray"
+  >
+    As created by generative AI.
+  </p>
+  <div class="font-imdb-roboto tracking-wide">{allReviews.length} Titles</div>
+  <p>Last Updated: 2024-04-30</p>
+  <div
+    class="flex flex-col gap-1 lg:m-[12px] lg:border-[rgba(0,0,0,0.12)] lg:border lg:rounded-md lg:p-4"
+  >
+    {allReviews.map((review) => <MovieCardIMDB review={review} />)}
+  </div>
+</LayoutIMDB>

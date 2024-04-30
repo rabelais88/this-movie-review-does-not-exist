@@ -1,0 +1,30 @@
+---
+import MovieCardRT from '@/components/rt/MovieCardRT.astro';
+import * as rtIntro from '@/content/misc/rt-intro.md';
+import LayoutRT from '@/layouts/LayoutListRT.astro';
+import { getCollection } from 'astro:content';
+// Get all entries from a collection.
+// Requires the name of the collection as an argument.
+// Example: retrieve `src/content/blog/**`
+const allReviews = await getCollection('review');
+---
+
+<LayoutRT title="TMDE">
+  <img
+    src="/an-unbearable-lightness-0.webp"
+    class="mt-20 h-[245px] w-full object-cover"
+  />
+
+  <div class="px-6 pt-10 font-franklin [&>h2]:font-bold [&>*]:mt-5">
+    <h1 class="text-[32px] font-medium">
+      ALL {allReviews.length} BEST PICTURES, BY GENERATIVE AI
+    </h1>
+
+    <p>Last Updated: 2024-04-30</p>
+    <rtIntro.Content />
+  </div>
+
+  <div class="flex flex-col p-2">
+    {allReviews.map((review) => <MovieCardRT review={review} />)}
+  </div>
+</LayoutRT>

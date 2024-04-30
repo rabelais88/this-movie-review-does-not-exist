@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import LayoutItemIMDB from '@/layouts/LayoutReviewIMDB.astro';
+import HeadingIMDB from '@/components/imdb/HeadingIMDB.astro';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const reviewEntries = await getCollection('review');
+  return reviewEntries.map((entry) => ({
+    params: { filename: entry.data.fileName },
+    props: { entry },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// const { filename } = Astro.params;
+---
+
+<LayoutItemIMDB
+  title={entry.data.title}
+  metaImage={`${import.meta.env.HOST_URL}/${entry.data.fileName}-0.webp`}
+  metaDesc=`TMDNE review, made by generative AI: ${entry.data.title}`
+>
+  <div
+    aria-roledescription="title-area"
+    style={{ backgroundImage: `url(/${entry.data.fileName}-0.webp)` }}
+  >
+    <div
+      class="bg-imdb-gradient backdrop-blur-2xl text-white font-imdb-roboto px-4 lg:px-0"
+    >
+      <div class="max-w-[1080px] mx-auto pt-5">
+        <h1 class="text-3xl">{entry.data.title}</h1>
+        <p class="text-[rgba(255,255,255,.7)] tracking-wide">
+          {entry.data.releaseYear}
+        </p>
+
+        <img class="mt-5" src={`/${entry.data.fileName}-0.webp`} />
+        <ul class="flex gap-2 my-4">
+          {
+            entry.data.genres.map((genre) => (
+              <li class="border border-gray-400 rounded-full px-2 py-1 capitalize">
+                {genre}
+              </li>
+            ))
+          }
+        </ul>
+        <div class="max-w-[650px] pb-10">
+          <p class="tracking-wider mb-3">{entry.data.plot}</p>
+          <div
+            class="[&>*]:border-t [&>*]:border-t-[rgba(255,255,255,.7)] [&>*]:py-3"
+          >
+            <div>
+              <b>Director</b>
+              <span class="text-link-blue-alt">{entry.data.director}</span>
+            </div>
+            <div>
+              <b>Writers</b>
+              <span class="text-link-blue-alt">{entry.data.screenplay}</span>
+            </div>
+            <div>
+              <b>Stars</b>
+              <span class="inline-flex gap-2"
+                >{
+                  entry.data.actor.map((actor) => (
+                    <span class="text-link-blue-alt">{actor}</span>
+                  ))
+                }</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white">
+    <div
+      class="max-w-[1080px] mx-auto [&>*]:mt-4 tracking-wide px-4 lg:px-0 pb-10"
+    >
+      <HeadingIMDB>Review</HeadingIMDB>
+      <Content />
+    </div>
+  </div>
+</LayoutItemIMDB>
+
+<style>
+  .bg-imdb-gradient {
+    --ipt-baseAlt-shade1-rgb: 31, 31, 31;
+    background: linear-gradient(
+      90deg,
+      rgb(var(--ipt-baseAlt-shade1-rgb, 31, 31, 31)),
+      20%,
+      rgba(var(--ipt-baseAlt-shade1-rgb, 31, 31, 31), 0.6),
+      80%,
+      rgb(var(--ipt-baseAlt-shade1-rgb, 31, 31, 31))
+    );
+  }
+</style>
