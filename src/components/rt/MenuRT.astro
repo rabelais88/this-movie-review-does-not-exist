@@ -3,21 +3,25 @@ import SearchReviewInput from '@/components/rt/react/SearchReviewInput';
 import { joinClass } from '@/utils';
 ---
 
-<nav data-comp="menu-rt" class="flex flex-col">
-  <div class="bg-[#FE0000] text-white h-[90px] flex items-center">
-    <a href="/rt"><img src="/logo-tmdne-rt.svg" /></a>
-    <SearchReviewInput
-      type="text"
-      className={joinClass(
-        'flex-1',
-        '[&>input]:h-[35px] [&>input]:w-full [&>input]:bg-[rgba(0,0,0,.4)] [&>input]:rounded-[26px] [&>input]:border [&>input]:border-white [&>input]:px-4'
-      )}
-      placeholder="Search movies and more..."
-      client:only="react"
-    />
+<div
+  class="bg-[#FE0000] text-white h-[90px] flex items-center flex-col lg:flex-row"
+>
+  <a href="/rt"><img src="/logo-tmdne-rt.svg" /></a>
+  <SearchReviewInput
+    type="text"
+    className={joinClass(
+      'flex-1 w-full pr-4',
+      '[&>input]:h-[35px] [&>input]:w-full [&>input]:bg-[rgba(0,0,0,.4)] [&>input]:rounded-[26px] [&>input]:border [&>input]:border-white',
+      // mobile screen
+      '[&>input]:px-4 [&>input]:ml-2 [&>svg]:right-5'
+    )}
+    placeholder="Search movies and more..."
+    client:only="react"
+  />
+  <div>
     <a class="font-neue mx-2" href="https://github.com/rabelais88"
       >GITHUB REPO</a
     >
     <a class="font-neue ml-2 mr-4" href="/">MODE</a>
   </div>
-</nav>
+</div>

@@ -32,7 +32,7 @@ const SearchReviewInput = ({ className, ...props }: SearchReviewInputProps) => {
           onClick={() => setKeyword('')}
         />
       )}
-      <div className="absolute inset-x-0 bottom-0 overflow-visible">
+      <div className="absolute inset-x-0 bottom-0 overflow-visible left-[-70px] lg:left-0">
         <div className="absolute inset-x-0 top-0 max-h-[300px] bg-white overflow-y-auto flex flex-col">
           {searchResult.map((result) =>
             result.item.type === 'film' ? (

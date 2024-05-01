@@ -4,7 +4,7 @@ import type { FuseResult } from 'fuse.js';
 const ItemFilm = ({ data }: { data: FuseResult<SearchIndex> }) => {
   return (
     <a
-      className="bg-[#1F1F1F] h-[120px] text-white flex p-3 font-imdb-roboto hover:bg-[rgb(80,80,80)] gap-2"
+      className="bg-[#1F1F1F] flex-col lg:flex-row lg:h-[120px] text-white flex p-3 font-imdb-roboto hover:bg-[rgb(80,80,80)] gap-2"
       href={`/review/${data.item.id}`}
     >
       <img
