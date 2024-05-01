@@ -6,7 +6,7 @@ const ItemActorIMDB = ({ data }: { data: FuseResult<SearchIndex> }) => {
     <a
       className="bg-[#1F1F1F] text-white flex p-3 font-imdb-roboto hover:bg-[rgb(80,80,80)] gap-2"
       // href={`/person/${data.item.id}`}
-      href="/"
+      href={`/?q=${data.item.name}`}
     >
       <p>
         <b>Person</b>: {data.item.name}

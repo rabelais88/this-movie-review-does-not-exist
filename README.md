@@ -215,7 +215,7 @@ Scene: Inside the cramped confines of a smoky comedy club, Lucy and Jack perform
 
 # Webpages
 
-- the entire webpages are made without any AI intervention. definitely want to use gen AI more but thinking about good question itself takes too long sometimes. it has been more useful when there is an edge case or the job requires some creativity. (which is kinda odd, this statement contracts to what's said earlier in this article.)
+- the entire webpages are made without any AI intervention. using gen AI more is definitely what I want to do but thinking about good question itself takes too long sometimes. it has been more useful when there is an edge case or the job requires some creativity. (which is kinda odd, this statement contracts to what's said earlier in this article.)
 
 # Insights
 
