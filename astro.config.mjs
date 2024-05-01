@@ -13,9 +13,13 @@ const reviewNames = reviewFiles
   .filter((f) => f !== '.DS_Store');
 const urls = [
   ...reviewNames.map((reviewName) => `${SITE_URL}/review/${reviewName}`),
-  ...reviewNames.map((reviewName) => `${SITE_URL}/review/rt/${reviewName}`),
+  // duplicated results negatively effect SEO.
+  // removed RT style
+  // ...reviewNames.map((reviewName) => `${SITE_URL}/review/rt/${reviewName}`),
 ];
 
+const reDuplicate =
+  /^https:\/\/www\.thismoviereviewdoesnotexist\.com\/rt\/(|.+)/i;
 // https://astro.build/config
 export default defineConfig({
   // for vercel analytics
@@ -24,7 +28,8 @@ export default defineConfig({
   site: SITE_URL,
   integrations: [
     sitemap({
-      customPages: [...urls],
+      customPages: urls,
+      filter: (page) => !reDuplicate.test(page),
     }),
     tailwind(),
     react(),
