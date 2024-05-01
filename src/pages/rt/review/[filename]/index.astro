@@ -74,7 +74,7 @@ const { Content } = await entry.render();
         </div>
         <div>
           <span>Stars</span>
-          <span class="inline-flex gap-2"
+          <span class="inline-flex gap-0 lg:gap-2 flex-col lg:flex-row"
             >{
               entry.data.actor.map((actor) => (
                 <span class="text-link-blue-alt">{actor}</span>
