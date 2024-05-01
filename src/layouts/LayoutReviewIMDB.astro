@@ -1,4 +1,5 @@
 ---
+import AdPlaceholderBottom from '@/components/AdPlaceholderBottom.astro';
 import MenuIMDB from '@/components/imdb/MenuIMDB.astro';
 interface Props {
   title: string;
@@ -20,10 +21,12 @@ const { title, metaImage, metaDesc } = Astro.props;
     <title>{title}</title>
     <meta property="og:image" content={metaImage} />
     <meta property="og:description" content={metaDesc} />
+    <meta property="description" content={metaDesc} />
   </head>
   <body>
     <MenuIMDB />
     <slot />
+    <AdPlaceholderBottom />
   </body>
 </html>
 <style is:global>

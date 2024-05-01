@@ -22,9 +22,9 @@ const { Content } = await entry.render();
 ---
 
 <LayoutReviewRT
-  title={`TMRDNE:${entry.data.title}(${entry.data.releaseYear})`}
+  title={`${entry.data.title}(${entry.data.releaseYear})`}
   metaImage={`${import.meta.env.HOST_URL}/${entry.data.fileName}-0.webp`}
-  metaDesc=`TMDNE review, made by generative AI: ${entry.data.title}`
+  metaDesc=`This Movie Review Does Not Exist, made by generative AI: ${entry.data.title}, ${entry.data.director}, ${entry.data.actor.join(',')}, ${entry.data.genres.join(',')}, ${entry.data.plot}`
 >
   <!-- <a href="/reviews">back to list</a> -->
   <div aria-roledescription="title-area">
