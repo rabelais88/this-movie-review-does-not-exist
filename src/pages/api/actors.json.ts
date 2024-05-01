@@ -2,6 +2,7 @@ import type { Actor } from '@/utils/actors';
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
+export const prerender = true;
 // Outputs: /actors.json
 export const GET: APIRoute = async ({ params, request }) => {
   const allReviews = await getCollection('review');
