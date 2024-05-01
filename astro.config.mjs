@@ -6,7 +6,11 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
   // site name for astrojs/sitemap
   site: import.meta.env.HOST_URL,
   integrations: [tailwind(), react(), sitemap()],
+  adaptor: vercel({
+    webAnalytics: { enabled: true },
+  }),
 });

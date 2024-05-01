@@ -27,7 +27,7 @@ Emma Stone and Ryan Gosling in a slapstick comedy.
 Nicolas Cage in a heartwarming family movie about talking animals.
 ```
 
-- tested out Midjourney with simple prompt. the result is great:
+- tested Midjourney with a simple prompt. the result is great:
 
 ```
 DVD screen grab from 90s action flick, Robin Williams. --ar 16:9
@@ -44,7 +44,7 @@ DVD screen grab from 90s action flick, Robin Williams. --ar 16:9
 - the initial plan was to create 100 fake movies and its reviews.
 - since the list is long and AI does take some time to generate answers, making long list with one question did not seem ideal. massive tasks were expected.
 - list is divided into 5 separate questions, asked to create 25 movies each.
-- _Pandas_ for repetitive data. it is more than enough for most data related tasks.
+- _Pandas_ Python library is used for managing repetitive data. it is more than enough for most data related tasks.
 - generating .CSV with ChatGPT(GPT) did not work at all. it inserted arbitrary special characters and spacings that can interfere with parsing. GPT does not know how to remove special chracters from data.
 
 ```
@@ -195,12 +195,12 @@ screenplay: {{writer's name}}
 
 # Generating images
 
-- Midjourney(MJ) seems to be the best on the market now.
+- Midjourney(MJ) seems to be the best among its competitors now..
 - the biggest issue is that MJ does not support any API; automation is possible but using a bot is regarded as TOS violation. while creating hundreds of articles using GPT is not that difficult, creating images with MJ is a huge pain. the project has been downsized to 18 cases of reviews and human-picked images.
-- also later realized that human intervention is necessary, both automated or not automated. MJ also produce really bad results.
-- MJ does not seem to remember a person. it does remember some facial, body features of specific person(i.g. race, long nose, wrinkles, small shape, balding hair...) but the end result is always quite far from the real.
-- MJ has some serious mannerisms when creating an image of specific person/genre. created scene prompts with GPT to break it.
-- this GPT prompt to produce MJ prompt does not work. because the longer the prompt gets, the weirder the image gets.
+- also later realized that human intervention is necessary, both automated or not automated. gen AI is not consistent, for both text and image.
+- MJ does not seem to remember a person. it does remember some facial, body features of specific person(i.g. race, long nose, wrinkles, small shape, balding hair...) but the end result is always quite far from beliveable.
+- MJ has some serious mannerisms when creating an image of famous person/genre. randomized scene prompts were made with GPT to break it.
+- this is some of the earlier MJ prompt created by GPT that did not work. MJ creates unrecognizable images with such long prompts.
 
 ```
 > create a midjourney prompt based on the review. make prompts of four separate scenes. the basic template is this: stills from {year of movie released}s {type of movie}, starring {actor name}, {lens type} --ar 16:9
@@ -209,22 +209,22 @@ Scene: Lucy (Emma Stone) and Jack (Ryan Gosling) stand outside a dimly lit comed
 Scene: Inside the cramped confines of a smoky comedy club, Lucy and Jack perform their ill-fated double act, "The Laughing Lovers". Clad in mismatched costumes and armed with an arsenal of slapstick props, the duo launches into a series of hilariously botched routines, eliciting groans and guffaws from the audience in equal measure. As chaos ensues on stage, Lucy and Jack's bond only grows stronger, their infectious laughter ringing out amidst the comedic mayhem.
 ```
 
-- adding commands such as "make it simpler" does not work. continously asking the similar kind of question for multiple times works.it. this also has been made into a pipeline with python.
+- adding commands such as "make it simpler" does not work. continously asking the similar kind of question for multiple times works. this has been made into a pipeline with python.
 
-- some MJ images took significantly more retries than the other images. these were face swapped with facefusion. it works great but sometimes also fails at recognizing face.
+- some MJ images took significantly more retries than the other images. face swap by facefusion are necessary for such cases. it works great but sometimes also fails at recognizing face.
 
 # Webpages
 
-- the entire webpages are made without any AI intervention. using gen AI more is definitely what I want to do but thinking about good question itself takes too long sometimes. it has been more useful when there is an edge case or the job requires some creativity. (which is kinda odd, this statement contracts to what's said earlier in this article.)
+- the entire website is made without any AI intervention. gen AI is more useful for edge case or the job requires some creativity. (which is kinda odd, this statement contracts to what's said earlier in this article.) gen AI is less useful when there's a clear picture. I was sure about what I wanted to create: movie critic site clone.
 
 # Insights
 
-- prompt engineering is definitely a something. In other words, gen AI still sucks at some problems.
+- prompt engineering is definitely a thing. In other words, gen AI still sucks at one-shot answer.
 - chain-prompting is a useful skill.
 - little knowledge of coding is especially useful for making chain-prompting pipelines.
-- creating consistent result with gen AI is incredibly difficult. always think of failure rate, be aware that some of the results are needed to be thrown away. when making pipelines, wrap the code with try-catch and save every result to machine readable format.
-- the end result is super interesting. some photos look very real.
-- gen AI is expensive. compared to the amount of money that is used for hosting a web app for a month, more money has been used on gen AI for 1 week of work. knowing how to save money when using gen AI seems like a good knowledge.
+- creating consistent result with gen AI is more difficult than the expectation. always think of failure rate, be aware that some of the results are needed to be thrown away. when making pipelines, wrap the code with try-catch and save every result to machine readable format.
+- the end result is super interesting. some photos look very real. some articles are fun to read.
+- gen AI is expensive. compared to the amount of money that is used for hosting a web app for a month, more money has been used on gen AI for 1 week of work. knowing how to save money when using gen AI is useful.
 
 # Note
 
