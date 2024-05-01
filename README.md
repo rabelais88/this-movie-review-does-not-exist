@@ -3,9 +3,9 @@
 Why was it made?
 
 - To create something humorous.
-- To explore the capabilities of the latest generative AI, particularly in image creation.
+- To explore the capabilities of the latest generative AI, particularly in image creation.🎨
 - To enhance the realism of AI-generated content.
-- To challenge the assumption that generative AI can effortlessly handle all tasks.
+- A reality check for AI if generative AI can effortlessly handle all tasks.
 
 # Starting point
 
@@ -82,6 +82,7 @@ it is okay to include indie artists.
 ```
 
 - Somehow this command gave too many Indian actors(4 out of 10):
+  - No hard feelings for these actors. It was just needlessly repetitive. Even more than Adam Sandlers and Will Ferrell.😂
 
 ```
 it is okay to include international artists.
@@ -207,9 +208,9 @@ Scene: Lucy (Emma Stone) and Jack (Ryan Gosling) stand outside a dimly lit comed
 Scene: Inside the cramped confines of a smoky comedy club, Lucy and Jack perform their ill-fated double act, "The Laughing Lovers". Clad in mismatched costumes and armed with an arsenal of slapstick props, the duo launches into a series of hilariously botched routines, eliciting groans and guffaws from the audience in equal measure. As chaos ensues on stage, Lucy and Jack's bond only grows stronger, their infectious laughter ringing out amidst the comedic mayhem.
 ```
 
-- Adding commands such as "make it simpler" does not work. Continously asking the similar kind of question for multiple times works. This has been made into a pipeline with python.
+- When generating Midjourney prompts with GPT, adding commands such as "make it simpler" does not work. Continously asking the similar kind of question for multiple times works. This has been made into a pipeline with python.
 
-- Employed face swap techniques for challenging cases. it works great but sometimes also fails at recognizing face. Even face swap is not consistent.
+- Employed face swap techniques for challenging cases. It works great but sometimes also fails at recognizing face. Even the success rate of face swap is not consistent.
 
 # Webpages
 
@@ -218,14 +219,15 @@ Scene: Inside the cramped confines of a smoky comedy club, Lucy and Jack perform
 # Insights
 
 - The unpredictability and cost of using generative AI should be highlighted.
-- Acknowledged the importance of prompt engineering in obtaining desired AI responses.
+- Learned the importance of prompt engineering in obtaining desired AI responses.
 - Noted the usefulness of chain-prompting techniques.
-- Emphasized the need for coding skills in creating effective AI pipelines. Especially useful for making chain-prompting pipelines.
-- Creating consistent result with generative AI is more difficult than the expectation. always think of failure rate, be aware that some of the results are needed to be thrown away. when making pipelines, wrap the code with try-catch and save every result to machine readable format.
-- The end result is super interesting. Some photos look very real. Some articles are fun to read.
-- Generative AI is expensive. compared to the amount of money that is used for hosting a web app for a month, more money has been used on gen AI for 1 week of work.
+- At least some degree of coding skills needed in creating effective AI pipelines. Especially useful for making chain-prompting pipelines.
+- Creating consistent result with generative AI is more difficult than the expectation. Failure rates are high, be aware that some of the results are needed to be thrown away.
+  - When making pipelines, wrap the code with try-catch and save every result to machine readable format.
+- The end result is super interesting. ✨ Some photos look very real. Some articles are fun to read.
+- Generative AI is expensive. Even a test costs. Compared to a monthly cost for a simple web server, generative AI for just 1 week of work costed more.😢
 
 # Note
 
 - Advertisements and collaboration offers are welcome.
-- Planned to add more reviews in the future.
+- Plan to add more reviews in the future.🙏
