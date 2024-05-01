@@ -2,15 +2,15 @@
 
 Why was it made?
 
-- to create something funny.
-- to try out the most recent image creation. latest(2024) iteration of generative AI(gen AI) has been really surprising.
-- to figure out how to make AI sound more realistic.
-- seems easy. generative AI will do all the work.(turned out, it's not true)
+- To create something humorous.
+- To explore the capabilities of the latest generative AI, particularly in image creation.
+- To enhance the realism of AI-generated content.
+- To challenge the assumption that generative AI can effortlessly handle all tasks.
 
 # Starting point
 
-- Jupyter Notebook for ideation/repetitive tasks.
-- the initial prompt for getting lists of plots and actors:
+- Utilized Jupyter Notebook for ideation and repetitive tasks.
+- Initial prompt involved requesting humorous combinations of actors and movie genres.
 
 ```
 give me humorous combinations of actors and movie genres. i.g. Robin Williams + action flick
@@ -27,7 +27,7 @@ Emma Stone and Ryan Gosling in a slapstick comedy.
 Nicolas Cage in a heartwarming family movie about talking animals.
 ```
 
-- tested Midjourney with a simple prompt. the result is great:
+- Tested Midjourney with a simple prompt, yielding promising results:
 
 ```
 DVD screen grab from 90s action flick, Robin Williams. --ar 16:9
@@ -35,17 +35,14 @@ DVD screen grab from 90s action flick, Robin Williams. --ar 16:9
 
 ![](robin-williams-test.webp)
 
-- the image is replication. the original result was more witty. it was lost by mistake.
-
-- both list and image was quite impactful, decided to move on to the second stage.
+- The image is recreation. I remember original result was more witty.
 
 # Generative AI to datasheets
 
-- the initial plan was to create 100 fake movies and its reviews.
-- since the list is long and AI does take some time to generate answers, making long list with one question did not seem ideal. massive tasks were expected.
-- list is divided into 5 separate questions, asked to create 25 movies each.
-- _Pandas_ Python library is used for managing repetitive data. it is more than enough for most data related tasks.
-- generating .CSV with ChatGPT(GPT) did not work at all. it inserted arbitrary special characters and spacings that can interfere with parsing. GPT does not know how to remove special chracters from data.
+- Initially planned to create 100 fake movies and their reviews.
+- Divided the task into manageable chunks due to AI processing time.
+- Used _Pandas_, Python library for data management, but encountered issues with CSV generation using GPT.
+- Opted for JSON format instead of CSV. GPT inserted arbitrary special characters and spacings that can interfere with parsing. GPT does not know how to remove special chracters from data.
 
 ```
 # sample .CSV generation(replication)
@@ -58,7 +55,7 @@ Robin Williams, Action Flick-Drama Jason Statham, "Drama".
 
 # On being random
 
-- the first 25 combinations are okay. it got too much repetitive over the iteration. it refers the same actor over and over. _Adam Sandler_ is referred more than 3 times in this list. it doesn't stop here and it gets more repetitive with more iteration.
+- Explored ways to reduce repetitiveness in AI-generated content. It refers the same actor over and over. _Adam Sandler_ is referred more than 3 times in this list. Check out the list here:
 
 ```
 	actor	director	genre
@@ -75,9 +72,10 @@ Robin Williams, Action Flick-Drama Jason Statham, "Drama".
 99	William Shatner	David Lynch	Psychedelic Drama
 ```
 
-- increasing randomness setting(temperature of GPT) works.
-- keeping the list of previous iteration does decrease repetitiveness to small degree.
-- most explicit commands did not work, somehow this one command worked:
+- Experimented with adjusting the randomness setting (temperature) of GPT.
+
+- Keeping the list of previous iteration does decrease repetitiveness to small degree.
+- Most explicit commands did not work, somehow this one command worked:
 
 ```
 it is okay to include indie artists.
@@ -89,7 +87,7 @@ it is okay to include indie artists.
 it is okay to include international artists.
 ```
 
-- gen AI really sucks at generating realistic sounding movie titles. It gave lazy titles 99% of time:
+- Generative AI really sucks at generating realistic sounding movie titles. It gave lazy titles 99% of time:
 
 ```
 "Star-crossed: A Cosmic Love Affair" - Starring Johnny Depp in an intergalactic sci-fi rom-com.
@@ -105,9 +103,11 @@ it is okay to include international artists.
 "Freeman's Folly: A Comedy of Errors" - Morgan Freeman in a slapstick comedy.
 ```
 
-- titles are generally too long, sound too honest. real movies don't explain everything in the title. tried explicit commands to remove subheadings. It did not work.
+- Titles are generally too long, sound too honest. Real movies don't explain everything in the title. Tried explicit commands to remove subheadings. It did not work.
 
-- here are the list of commands did not work. it felt like the AI was playing too safe.
+- Discovered that explicit commands yielded mixed results.
+- Explored various techniques to improve the quality of AI-generated movie titles.
+- Here are the list of commands did not work. It felt like the AI was playing too safe.
 
 ```
 be creative.
@@ -118,7 +118,7 @@ it is okay to be irrelevant to the movie.
 make it sound realistic <- this sometimes worked. but less than 10%.
 ```
 
-- this command generates somewhat realistic titles, but some titles were too obvious. almost sound like parodies.
+- This command generates somewhat realistic titles, but some titles were too obvious. almost sound like parodies.
 
 ```
 > Refer to real-world movie titles when naming title. Make opposite or exaggerate, make twist to the real-world movie titles to generate it.
@@ -138,13 +138,13 @@ make it sound realistic <- this sometimes worked. but less than 10%.
 ...
 ```
 
-- this command also did not work. sometimes AI just ignored by demand and created 5 two word titles and 2 three word titles. it hates short, one word titles.
+- This command also did not work. Sometimes AI just ignored by demand and created 5 two word titles and 2 three word titles. It averts short, one word titles.
 
 ```
 write 3 one word titles, 2 two words titles, 2 three or more words titles with given info.
 ```
 
-- as a last resort, randomness is increased by using _REAL_ random numbers with python code. it works.
+- As a last resort, randomness is increased by using _REAL_ random numbers with python code. It works.
 
 ```python
 # python
@@ -152,11 +152,11 @@ num_words = random.choice([1,2,3])
 open_ai.chat(f"give me movie titles, using only {num_words} words.")
 ```
 
-- gen AI is excellent at prediction but bad at being random.
+- Generative AI is excellent at prediction but bad at being random.
 
 # Writing review
 
-- this format was used for the first iteration of writing reviews.
+- This format was used for the first iteration of writing reviews.
 
 ```
 system: you are a movie blogger. write a review compliant to the given template.
@@ -176,16 +176,15 @@ screenplay: {{writer's name}}
 {{maximum 3 paragraphs of review. start the review with personal anecdote or magazine style intro.}}
 ```
 
-- using a markdown + frontmatter format produced almost 95% perfect machine readable answer.
-
-- however, reviews did not sound natural at all. there were no plots, it always started with similar intros and endings. almost always praised the movie in the end, urging readers to go watch the movie. personally, I don't like to hear words such as _readers_ in writing. sounds too amaturish. So I have added this note.
+- Using a markdown + frontmatter format produced almost 95% perfect machine readable answer.
+- Encountered challenges in producing natural-sounding reviews. Intros and endings are especially repetitive. Personally, I don't like to hear words such as _readers_ in writing. This note is added to avoid such phenomenon.
 
 ```
 - Do not solicit "audiences" or "readers" anything.
 - Please do criticize or praise the movie in the end. Don't shy away from discussing its shortcomings.
 ```
 
-- added this note, which is also produced by GPT. asked 'the review does not sound natural, how can I make it sound more natrual?'
+- Added this note, which is also produced by GPT. Asked 'the review does not sound natural, how can I make it sound more natrual?'
 
 ```
 - Delve into specific elements of the film that stood out, such as standout performances, notable cinematography, or thought-provoking themes.
@@ -195,12 +194,11 @@ screenplay: {{writer's name}}
 
 # Generating images
 
-- Midjourney(MJ) seems to be the best among its competitors now..
-- the biggest issue is that MJ does not support any API; automation is possible but using a bot is regarded as TOS violation. while creating hundreds of articles using GPT is not that difficult, creating images with MJ is a huge pain. the project has been downsized to 18 cases of reviews and human-picked images.
-- also later realized that human intervention is necessary, both automated or not automated. gen AI is not consistent, for both text and image.
-- MJ does not seem to remember a person. it does remember some facial, body features of specific person(i.g. race, long nose, wrinkles, small shape, balding hair...) but the end result is always quite far from beliveable.
-- MJ has some serious mannerisms when creating an image of famous person/genre. randomized scene prompts were made with GPT to break it.
-- this is some of the earlier MJ prompt created by GPT that did not work. MJ creates unrecognizable images with such long prompts.
+- Midjourney was selected as the preferred tool for image generation. It's the best among its competitors.
+- Faced limitations due to the lack of API support for automation: MJ does not support any API. Automation is possible but using a bot is regarded as TOS violation. While creating hundreds of articles using GPT is not that difficult, creating images with MJ is a huge pain. The project has been downsized to 18 cases of reviews and human-picked images.
+- Also later realized that human intervention is necessary, both automated or not automated. Generative AI is not consistent, for both text and image.
+- Experienced difficulties in creating believable images of famous individuals.
+- This is some of the earlier MJ prompt created by GPT that did not work. MJ creates unrecognizable images with such long prompts.
 
 ```
 > create a midjourney prompt based on the review. make prompts of four separate scenes. the basic template is this: stills from {year of movie released}s {type of movie}, starring {actor name}, {lens type} --ar 16:9
@@ -209,24 +207,25 @@ Scene: Lucy (Emma Stone) and Jack (Ryan Gosling) stand outside a dimly lit comed
 Scene: Inside the cramped confines of a smoky comedy club, Lucy and Jack perform their ill-fated double act, "The Laughing Lovers". Clad in mismatched costumes and armed with an arsenal of slapstick props, the duo launches into a series of hilariously botched routines, eliciting groans and guffaws from the audience in equal measure. As chaos ensues on stage, Lucy and Jack's bond only grows stronger, their infectious laughter ringing out amidst the comedic mayhem.
 ```
 
-- adding commands such as "make it simpler" does not work. continously asking the similar kind of question for multiple times works. this has been made into a pipeline with python.
+- Adding commands such as "make it simpler" does not work. Continously asking the similar kind of question for multiple times works. This has been made into a pipeline with python.
 
-- some MJ images took significantly more retries than the other images. face swap by facefusion are necessary for such cases. it works great but sometimes also fails at recognizing face.
+- Employed face swap techniques for challenging cases. it works great but sometimes also fails at recognizing face. Even face swap is not consistent.
 
 # Webpages
 
-- the entire website is made without any AI intervention. gen AI is more useful for edge case or the job requires some creativity. (which is kinda odd, this statement contracts to what's said earlier in this article.) gen AI is less useful when there's a clear picture. I was sure about what I wanted to create: movie critic site clone.
+- Developed the website without AI intervention, as the project required clarity and precision.
 
 # Insights
 
-- prompt engineering is definitely a thing. In other words, gen AI still sucks at one-shot answer.
-- chain-prompting is a useful skill.
-- little knowledge of coding is especially useful for making chain-prompting pipelines.
-- creating consistent result with gen AI is more difficult than the expectation. always think of failure rate, be aware that some of the results are needed to be thrown away. when making pipelines, wrap the code with try-catch and save every result to machine readable format.
-- the end result is super interesting. some photos look very real. some articles are fun to read.
-- gen AI is expensive. compared to the amount of money that is used for hosting a web app for a month, more money has been used on gen AI for 1 week of work. knowing how to save money when using gen AI is useful.
+- The unpredictability and cost of using generative AI should be highlighted.
+- Acknowledged the importance of prompt engineering in obtaining desired AI responses.
+- Noted the usefulness of chain-prompting techniques.
+- Emphasized the need for coding skills in creating effective AI pipelines. Especially useful for making chain-prompting pipelines.
+- Creating consistent result with generative AI is more difficult than the expectation. always think of failure rate, be aware that some of the results are needed to be thrown away. when making pipelines, wrap the code with try-catch and save every result to machine readable format.
+- The end result is super interesting. Some photos look very real. Some articles are fun to read.
+- Generative AI is expensive. compared to the amount of money that is used for hosting a web app for a month, more money has been used on gen AI for 1 week of work.
 
 # Note
 
-- advertisements are welcome. Please contact me at sungryeolp@gmail.com
-- more reviews will be added.
+- Advertisements and collaboration offers are welcome.
+- Planned to add more reviews in the future.
