@@ -22,7 +22,7 @@ const { Content } = await entry.render();
 ---
 
 <LayoutReviewRT
-  title={entry.data.title}
+  title={`TMRDNE:${entry.data.title}(${entry.data.releaseYear})`}
   metaImage={`${import.meta.env.HOST_URL}/${entry.data.fileName}-0.webp`}
   metaDesc=`TMDNE review, made by generative AI: ${entry.data.title}`
 >
