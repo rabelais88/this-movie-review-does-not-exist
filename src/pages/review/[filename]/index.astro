@@ -2,24 +2,24 @@
 import { getCollection } from 'astro:content';
 import LayoutItemIMDB from '@/layouts/LayoutReviewIMDB.astro';
 import HeadingIMDB from '@/components/imdb/HeadingIMDB.astro';
+export const prerender = true;
 
 // for static
-// export async function getStaticPaths() {
-//   const reviewEntries = await getCollection('review');
-//   return reviewEntries.map((entry) => ({
-//     params: { filename: entry.data.fileName },
-//     props: { entry },
-//   }));
-// }
+export async function getStaticPaths() {
+  const reviewEntries = await getCollection('review');
+  return reviewEntries.map((entry) => ({
+    params: { filename: entry.data.fileName },
+    props: { entry },
+  }));
+}
 // for static
-// const { entry } = Astro.props;
-// const { filename } = Astro.params;
+const { entry } = Astro.props;
 
 // for SSR
-const { filename } = Astro.params;
-const reviewEntries = await getCollection('review');
-const entry = reviewEntries.find((e) => e.slug === filename);
-if (!entry) return Astro.redirect('/404');
+// const { filename } = Astro.params;
+// const reviewEntries = await getCollection('review');
+// const entry = reviewEntries.find((e) => e.slug === filename);
+// if (!entry) return Astro.redirect('/404');
 const { Content } = await entry.render();
 ---
 

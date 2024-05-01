@@ -44,9 +44,6 @@ dependencies:
   react-dom:
     specifier: ^18.3.1
     version: 18.3.1(react@18.3.1)
-  serverless:
-    specifier: link:@astrojs/vercel/serverless
-    version: link:@astrojs/vercel/serverless
   tailwindcss:
     specifier: ^3.4.3
     version: 3.4.3

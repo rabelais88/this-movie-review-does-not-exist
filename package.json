@@ -23,7 +23,6 @@
     "fuse.js": "^7.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "serverless": "link:@astrojs/vercel/serverless",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
