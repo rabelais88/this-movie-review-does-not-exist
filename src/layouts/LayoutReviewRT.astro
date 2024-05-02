@@ -26,6 +26,8 @@ const { title, metaImage, metaDesc } = Astro.props;
     <meta property="og:image" content={metaImage} />
     <meta property="og:description" content={metaDesc} />
     <meta property="description" content={metaDesc} />
+    <!-- prevent duplicate crawling from search engines, prevent SEO score drop -->
+    <meta name="robots" content="noindex,nofollow" />
   </head>
   <body>
     <main class="max-w-[1008px] mx-auto bg-white">
