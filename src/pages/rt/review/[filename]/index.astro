@@ -23,7 +23,7 @@ const { Content } = await entry.render();
 
 <LayoutReviewRT
   title={`${entry.data.title}(${entry.data.releaseYear})`}
-  metaImage={`${import.meta.env.HOST_URL}/${entry.data.fileName}-0.webp`}
+  metaImage={`${import.meta.env.CLOUDFRONT_URL}/${entry.data.fileName}-0.webp`}
   metaDesc=`This Movie Review Does Not Exist, made by generative AI: ${entry.data.title}, ${entry.data.director}, ${entry.data.actor.join(',')}, ${entry.data.genres.join(',')}, ${entry.data.plot}`
 >
   <!-- <a href="/reviews">back to list</a> -->
@@ -33,7 +33,7 @@ const { Content } = await entry.render();
     >
       <img
         class="absolute w-full h-full object-cover object-center"
-        src={`/${entry.data.fileName}-0.webp`}
+        src={`${import.meta.env.CLOUDFRONT_URL}/${entry.data.fileName}-0.webp`}
       />
       <div
         aria-roledescription="shade"

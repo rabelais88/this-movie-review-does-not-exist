@@ -3,6 +3,7 @@
 
 interface ImportMetaEnv {
   readonly HOST_URL: string;
+  readonly CLOUDFRONT_URL: string;
   // more env variables...
 }
 

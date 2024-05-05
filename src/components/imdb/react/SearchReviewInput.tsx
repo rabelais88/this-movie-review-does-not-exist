@@ -6,10 +6,15 @@ import ItemFilm from './ItemFilm';
 import IconSearch from './IconSearch';
 import IconClose from './IconClose';
 
-interface SearchReviewInputProps
-  extends InputHTMLAttributes<HTMLInputElement> {}
+interface SearchReviewInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  cloudFrontUrl: string;
+}
 
-const SearchReviewInput = ({ className, ...props }: SearchReviewInputProps) => {
+const SearchReviewInput = ({
+  className,
+  cloudFrontUrl,
+  ...props
+}: SearchReviewInputProps) => {
   const { keyword, setKeyword, searchResult } = useSearch();
   return (
     <div
@@ -36,7 +41,11 @@ const SearchReviewInput = ({ className, ...props }: SearchReviewInputProps) => {
         <div className="absolute inset-x-0 top-0 max-h-[300px] bg-white overflow-y-auto flex flex-col">
           {searchResult.map((result) =>
             result.item.type === 'film' ? (
-              <ItemFilm key={result.refIndex} data={result} />
+              <ItemFilm
+                key={result.refIndex}
+                data={result}
+                cloudFrontUrl={cloudFrontUrl}
+              />
             ) : (
               <ItemActor key={result.refIndex} data={result} />
             )

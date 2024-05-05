@@ -30,7 +30,9 @@ const { Content } = await entry.render();
 >
   <div
     aria-roledescription="title-area"
-    style={{ backgroundImage: `url(/${entry.data.fileName}-0.webp)` }}
+    style={{
+      backgroundImage: `url(${import.meta.env.CLOUDFRONT_URL}/${entry.data.fileName}-0.webp)`,
+    }}
   >
     <div
       class="bg-imdb-gradient backdrop-blur-2xl text-white font-imdb-roboto px-4 lg:px-0"
@@ -41,7 +43,10 @@ const { Content } = await entry.render();
           {entry.data.releaseYear}
         </p>
 
-        <img class="mt-5" src={`/${entry.data.fileName}-0.webp`} />
+        <img
+          class="mt-5"
+          src={`${import.meta.env.CLOUDFRONT_URL}/${entry.data.fileName}-0.webp`}
+        />
         <ul class="flex gap-2 my-4">
           {
             entry.data.genres.map((genre) => (

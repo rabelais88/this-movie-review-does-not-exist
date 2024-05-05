@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "sync-images": "vite-node build-scripts/postbuild.ts",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -27,7 +28,13 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.569.0",
+    "@types/async": "^3.2.24",
+    "@types/node": "^20.12.8",
+    "async": "^3.2.5",
+    "dotenv": "^16.4.5",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0"
+    "prettier-plugin-astro": "^0.13.0",
+    "vite-node": "^1.6.0"
   }
 }

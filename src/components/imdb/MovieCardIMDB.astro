@@ -12,7 +12,7 @@ const { review } = Astro.props;
 >
   <img
     class="w-full h-[209px] object-cover mb-2"
-    src={`/${review.data.fileName}-0.webp`}
+    src={`${import.meta.env.CLOUDFRONT_URL}/${review.data.fileName}-0.webp`}
   />
   <div class="flex flex-col gap-2">
     <p class="font-extrabold">{review.data.title}</p>

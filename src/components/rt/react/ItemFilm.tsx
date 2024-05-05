@@ -1,14 +1,20 @@
 import type { SearchIndex } from '@/utils/search-index';
 import type { FuseResult } from 'fuse.js';
 
-const ItemFilm = ({ data }: { data: FuseResult<SearchIndex> }) => {
+const ItemFilm = ({
+  data,
+  cloudFrontUrl,
+}: {
+  data: FuseResult<SearchIndex>;
+  cloudFrontUrl: string;
+}) => {
   return (
     <a
       className=" h-[120px] p-3 font-franklin text-black flex gap-2"
       href={`/rt/review/${data.item.id}`}
     >
       <img
-        src={`/${data.item.id}-0.webp`}
+        src={`${cloudFrontUrl}/${data.item.id}-0.webp`}
         className="h-full w-[200px] object-cover rounded-[4px]"
       />
       <div className="flex-1">

@@ -16,6 +16,7 @@ import { joinClass } from '@/utils';
       '[&>input]:px-4 [&>input]:ml-2 [&>svg]:right-5'
     )}
     placeholder="Search movies and more..."
+    cloudFrontUrl={import.meta.env.CLOUDFRONT_URL}
     client:only="react"
   />
   <div>
